@@ -3,34 +3,32 @@
     <head>
         <title>TechShop</title>
         <meta charset="UTF-8">
-       
+        <link th:href="@/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <!--h1>Un Cliente</h1>
-        <p>Nombre:<span th:text="${cliente.nombre}"></span></p>
-        <p>Apellidos:<span th:text="${cliente.apellidos}"></span></p>
-        <p>Correo:<span th:text="${cliente.correo}"></span></p>
-        <p>Teléfono:<span th:text="${cliente.telefono}"></span></p>
-        <br>
-        <br>-->
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Correo</th>
-                    <th>Teléfono</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="item : ${clientes}">
-                    <td th:text="${item.nombre}">></td>
-                    <td th:text="${item.apellidos}"></td>
-                    <td th:text="${item.correo}"></td>
-                    <td th:text="${item.telefono}"></td>
-                </tr>
-            </tbody>
-        </table>
+        <header th:replace="layout/plantilla :: header"/>
 
+        <div class="contenido">
+            <h2>Nuestros articulos</h2>
+            <div th:if="${articulos != null and !articulos.empty}">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="item : ${articulos}">
+                            <td th:text="${item.descripcion}"></td>
+                            <td th:text="${#numbers.formatDecimal(item.precio, 3, 2)}"></td>
+                            <td><a th:href="@{/carrito/agregar/} + ${item.idArticulo}">Agregar</a></td>
+                    </tbody>
+                </table>
+            </div>
+ 
+            <div th:if="${articulos == null or articulos.empty}">
+                No tenemos lista de articulos para mostrar.
+            </div>
     </body>
 </html>

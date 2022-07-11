@@ -49,11 +49,32 @@ body{
 }
 
 .nav-menu-item:hover{
-    background-color: navy;
-    transition: 0.5s
+    font-size: 22px;
+    background-color: cornflowerblue;
+    transition: 1s;
 }
 
 nav-menu-link{
     padding: 8px 12px;
     border-radius: 4px;
+}
+
+.footer{
+    background-color: black;
+    color: white;
+    text-align: center;
+    height: 20px;
+    bottom: 0;
+    left: 0;
+    width: 100%
+}
+
+.contenido{
+    background-color: wheat;
+    position: fixed;
+    top: 80px;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    overflow: auto;
 }
