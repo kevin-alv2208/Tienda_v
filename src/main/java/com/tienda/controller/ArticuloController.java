@@ -2,6 +2,7 @@ package com.tienda.controller;
 
 import com.tienda.domain.Articulo;
 import com.tienda.service.ArticuloService;
+import com.tienda.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,19 +14,24 @@ public class ArticuloController {
     @Autowired
     private ArticuloService articuloService;
     
+    @Autowired
+    private CategoriaService categoriaService;
+    
     @GetMapping("/articulo/listado")
    public String inicio (Model model){
     var articulos = articuloService.getArticulos(false);
     model.addAttribute("articulo",articulos);
-    return "/articulos/listado";
+    return "/articulo/listado";
    }
    
-    @GetMapping("/articulo/nuevoArticulo")
-    public String nuevoArticulo(Articulo articulo) {
+    @GetMapping("/articulo/nuevo")
+    public String nuevoArticulo(Articulo articulo, Model model) {
+        var categorias = categoriaService.getCategorias(true);
+        model.addAttribute("categorias", categorias);
         return "/articulo/modificar";
     }
 
-    @PostMapping("/articulo/guardarArticulo")
+    @PostMapping("/articulo/guardar")
     public String guardarArticulo(Articulo articulo) {
         articuloService.save(articulo);
         return "redirect:/articulo/listado";
@@ -33,6 +39,8 @@ public class ArticuloController {
 
     @GetMapping("/articulo/modificar/{idArticulo}")
     public String modificarArticulo(Articulo articulo, Model model) {
+        var categorias = categoriaService.getCategorias(false);
+        model.addAttribute("categorias",categorias);
         articulo = articuloService.getArticulo(articulo);
         model.addAttribute("articulo", articulo);
         return "/articulomodificar";
