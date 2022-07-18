@@ -50,6 +50,7 @@ public class ArticuloController {
     public String eliminarArticulo(Articulo articulo, Model model) {
         articuloService.delete(articulo);
         return "redirect:/articulo/listado";
+        
     }
     
 }
