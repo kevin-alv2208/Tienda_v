@@ -11,19 +11,25 @@
                 <a th:href="@{/}" class="logo nav-link">TechShop</a>
                 <ul class="nav-menu">
                     <li class="nav-menu-item">
-                        <a th:href="@{/cliente/listado}" class="nav-menu-link nav-link">Clientes</a>
+                        <a th:href="@{/cliente/listado}" class="nav-menu-link nav-link"
+                           th:text="#{plantilla.clientes}">Clientes</a>
                     </li>
                     <li class="nav-menu-item">
-                        <a th:href="@{/categoria/listado}" class="nav-menu-link nav-link">Categorías</a>
+                        <a th:href="@{/categoria/listado}" class="nav-menu-link nav-link"
+                           th:text="#{plantilla.categorias}">Categorías</a>
                     </li>
                     <li class="nav-menu-item">
-                        <a th:href="@{/articulo/listado}" class="nav-menu-link nav-link">Articulos</a>
+                        <a th:href="@{/articulo/listado}" class="nav-menu-link nav-link"
+                           th:text="#{plantilla.articulos}">Articulos</a>
                     </li>
                 </ul>
             </nav>
         </header>
         <footer th:fragment="footer" class="footer">
-            <p>&COPY; Derechos Reservados 2022</p>
+            <p>&COPY; [[#{plantilla.derechos}]]
+                <a th:href="@{/(lang=es)}">ES</a>
+                <a th:href="@{/(lang=en)}">EN</a>
+            </p>
         </footer>
     </body>
 </html>
