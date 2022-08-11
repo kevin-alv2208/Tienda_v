@@ -39,7 +39,7 @@
                 <label for="activo">Activo: </label>
                 <input type="checkbox" id="activo" name="activo" th:field="*{activo}" />
                 <br/>
-                <input type="submit" name="guardar" value="Guardar" />
+                <input type="submit" name="guardar" th:value="#accion.guardar" />
             </form>
         </div>
     </body>
