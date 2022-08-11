@@ -7,7 +7,20 @@
         <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <header th:replace="layout/plantilla :: header"/>
+        <header th:replace="layout/plantilla :: header" />
+        <section th:replace="cliente/fragmentosCliente :: botonesAgregar"/>
+        <section th:replace="cliente/fragmentosCliente :: agregarCliente"/>
+        <section th:replace="cliente/fragmentosCliente :: listadoClientes"/>
+        <section class="py-4 mb-4 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/cliente/ReporteClientes}"
+                           class="btn-primary">
+                    </div>
+                </div>
+            </div>
+        </section>
         <div class="contenido">
             <h2>Listado de Clientes</h2>
             <div th:if="${clientes != null and !clientes.empty}">
